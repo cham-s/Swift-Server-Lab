@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Model</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-            </head>
-    <body class="container">
-        <h1> Userlist </h1>
-        <form method="POST" action="/user">
-            <div class="input-group">
-                <input type="text" name="username" class="form-control">
-                <span class="input-group-btn">
-                    <input class="btn btn-default" type="submit" value="submit" />
-                </span>
-            </div>
-        </form>
-        #loop(userlist, "user") {
-        <div class="row">
-            <div class="col-xs-12">
-                #(user.username)
-            </div>
-        </div>
-        }
-    </body>
+<head>
+<title>Image-Upload</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+<h1 class="text-center">Image Upload</h1>
+<div class="panel panel-primary">
+<div class="panel-heading text-center">
+Profile Picture
+</div>
+<div class="panel-body">
+<form action="/upload" method="POST" enctype="multipart/form-data" id="upload-form">
+
+<div class="form-group">
+<h4>User</h4>
+<select class="form-control" name="userId" form="upload-form">
+#loop(userlist, "user") {
+<option value="#(user.id)">#(user.username)</option>
+}
+</select>
+</div>
+<div class="form-group">
+<input type="file" accept="image/png,image/jpg" name="image">
+</div>
+<input class="btn btn-success btn-block" type="submit" value="Upload">
+</form>
+</div>
+</div>
+</div>
+</div>
+</body>
 </html>

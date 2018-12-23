@@ -19,4 +19,9 @@ final class UserController {
     try user.save()
     return Response(redirect: "/user")
   }
+    
+    func getUpload(_ req: Request) throws -> ResponseRepresentable {
+        let list = try User.all()
+        return try drop.view.make("upload", ["userlist": list.makeNode(in: nil)])
+    }
 }
